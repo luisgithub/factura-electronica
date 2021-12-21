@@ -50,7 +50,7 @@ public final class ExampleCFDv40Factory {
         comp.setMetodoPago(CMetodoPago.PUE);
         comp.setLugarExpedicion("03240");
         comp.setConfirmacion("aB1cD");
-        comp.setCfdiRelacionados(createCfdiRelacionados(of));
+//        comp.setCfdiRelacionados(createCfdiRelacionados(of));
         comp.setEmisor(createEmisor(of));
         comp.setReceptor(createReceptor(of));
         comp.setConceptos(createConceptos(of));
@@ -103,7 +103,7 @@ public final class ExampleCFDv40Factory {
         c1.setImporte(new BigDecimal("775.00"));
         c1.setImpuestos(createImpuestosConceptos(of));
         c1.getInformacionAduanera().add(createInformacionAduanera(of));
-        c1.setCuentaPredial(createCuentaPredial(of));
+//        c1.setCuentaPredial(createCuentaPredial(of));
         list.add(c1);
         Concepto c2 = of.createComprobanteConceptosConcepto();
         c2.setClaveProdServ("10101501");
@@ -116,7 +116,7 @@ public final class ExampleCFDv40Factory {
         c2.setValorUnitario(new BigDecimal("775.00"));
         c2.setImpuestos(createImpuestosConceptos(of));
         c2.getInformacionAduanera().add(createInformacionAduanera(of));
-        c2.setCuentaPredial(createCuentaPredial(of));
+//        c2.setCuentaPredial(createCuentaPredial(of));
         list.add(c2);
         return cps;
     }

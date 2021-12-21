@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>mx.grupocorasa.cfdi</groupId>
     <artifactId>cfdi-base</artifactId>
-    <version>3.3.2</version>
+    <version>4.0</version>
     <packaging>jar</packaging>
     <name>cfdi-base</name>
     <url>https://github.com/GrupoCorasa/factura-electronica</url>
@@ -157,6 +157,19 @@
                             <schemaDirectory>src/main/resources/xsd/v33</schemaDirectory>
                             <outputDirectory>${project.build.directory}/generated-sources/xjc5</outputDirectory>
                             <staleFile>${project.build.directory}/generated-sources/xjc5/.staleFlag</staleFile>
+                            <extension>true</extension>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>schema52-xjc</id>
+                        <goals>
+                            <goal>xjc</goal>
+                        </goals>
+                        <configuration>
+                            <packageName>mx.bigdata.sat.cfdi.v40.schema</packageName>
+                            <schemaDirectory>src/main/resources/xsd/v40</schemaDirectory>
+                            <outputDirectory>${project.build.directory}/generated-sources/xjc52</outputDirectory>
+                            <staleFile>${project.build.directory}/generated-sources/xjc52/.staleFlag</staleFile>
                             <extension>true</extension>
                         </configuration>
                     </execution>

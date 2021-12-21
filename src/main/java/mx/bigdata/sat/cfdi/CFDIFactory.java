@@ -43,7 +43,9 @@ public final class CFDIFactory extends CFDFactory {
             return new CFDv32(new ByteArrayInputStream(data));
         } else if (getVersion(data).equals("3.3")) {
             return new CFDv33(new ByteArrayInputStream(data));
-        } else{
+        } else if(getVersion(data).equals("4")){
+            return new CFDv40(new ByteArrayInputStream(data));
+        } else {
             return new CFDv3(new ByteArrayInputStream(data));
         }
     }

@@ -243,9 +243,9 @@ public final class CFDv40 implements CFDI {
     private String getSchemaLocation() throws Exception {
         List<String> contexts = new ArrayList<>();
         String schema = "http://www.sat.gob.mx/cfd/4 http://www.sat.gob.mx/sitio_internet/cfd/4/cfdv40.xsd";
-        if (document != null && document.getComplemento() != null && document.getComplemento().size() > 0) {
-            for (Comprobante.Complemento o : document.getComplemento()) {
-                for (Object c : o.getAny()) {
+        if (document != null && document.getComplemento() != null && document.getComplemento().getAny().size() > 0) {
+//            for (Comprobante.Complemento o : (Comprobante.Complemento)document.getComplemento().getAny()) {
+                for (Object c : document.getComplemento().getAny()) {
                     if (c instanceof mx.bigdata.sat.cfdi.v33.schema.TimbreFiscalDigital) {
                         //El schema location debe de ir en el nodo de TFD, no en el de comprobante.
                     } else if (c instanceof mx.bigdata.sat.common.nomina.v12.schema.Nomina) {
@@ -264,7 +264,7 @@ public final class CFDv40 implements CFDI {
                         System.out.println("El complemento " + c + " aún no ha sido declarado.");
                     }
                 }
-            }
+//            }
             if (!contexts.isEmpty()) {
                 getContext(contexts.toArray(new String[contexts.size()]));
             }
@@ -324,7 +324,7 @@ public final class CFDv40 implements CFDI {
 
     @Override
     public ComprobanteBase getComprobante() throws Exception {
-        return new CFDv33ComprobanteBase(doGetComprobante());
+        return new CFDv40ComprobanteBase(doGetComprobante());
     }
 
     Comprobante doGetComprobante() throws Exception {
@@ -358,7 +358,7 @@ public final class CFDv40 implements CFDI {
 
         @Override
         public List<Object> getComplementoGetAny() {
-            return document.getComplemento().stream()
+            return document.getComplemento().getAny().stream()
                     .map(complemento -> (Object) complemento)
                     .collect(Collectors.toList());
         }
@@ -374,7 +374,7 @@ public final class CFDv40 implements CFDI {
             Comprobante.Complemento comp = of.createComprobanteComplemento();
             List<Object> list = comp.getAny();
             list.add(element);
-            document.getComplemento().add(comp);
+            document.getComplemento().getAny().add(comp);
         }
 
         @Override
